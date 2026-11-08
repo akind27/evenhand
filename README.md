@@ -5,6 +5,7 @@ Keep your passport. Keep the peace.
 Some island rental shops keep a tourist's passport as the deposit. Evenhand replaces it with a PayPal hold and a sealed photo record that the shop and the renter both see. AI compares the photos. A person decides any charge.
 
 - Live demo: https://evenhand-one.vercel.app (real PayPal sandbox; see "Sandbox test buyer" below to approve a hold)
+- Demo video (2:18): https://youtu.be/Zv2DNoRMAtA
 - Licence: MIT (see `LICENSE`)
 - Built for the PayPal AI Hackathon 2026. PayPal sandbox only. No real money moves.
 
@@ -82,8 +83,8 @@ A hosted site (Vercel) needs the PayPal sandbox keys and `BLOB_READ_WRITE_TOKEN`
 
 On the live site the yellow PayPal button opens PayPal's real sandbox. To approve the €150 hold, log in there with this PayPal **sandbox** buyer (test money only, no real account):
 
-- Email: `sb-cwoxd53781910@personal.example.com`
-- Password: <!-- SANDBOX_BUYER_PASSWORD: Akind adds the sandbox buyer password here before submitting. -->
+- Email: sb-cwoxd53781910@personal.example.com
+- Password: GZ91%N6b
 
 PayPal's button may say "Pay"; the app only asks PayPal for an authorization (a hold). Nothing is captured until the renter accepts a charge.
 
