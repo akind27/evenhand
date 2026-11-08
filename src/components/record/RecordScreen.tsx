@@ -216,8 +216,14 @@ export function RecordScreen({ id }: { id: string }) {
         ) : null}
         {showAiLine ? <div className="mt-2"><AiLabel /></div> : null}
         <div className="mt-1">
-          <RecordedAiNote answer={view.conditionAiFailed ? null : view.conditionAi} />
-          <RecordedAiNote answer={view.aiFailed ? null : view.comparisonAi} />
+          {/* One note is enough: the condition record and the comparison come from the same recording. */}
+          <RecordedAiNote
+            answer={
+              [view.conditionAiFailed ? null : view.conditionAi, view.aiFailed ? null : view.comparisonAi].find(
+                (answer) => answer?.recorded,
+              ) ?? null
+            }
+          />
         </div>
       </section>
 

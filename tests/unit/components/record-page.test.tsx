@@ -106,6 +106,14 @@ describe('RecordScreen', () => {
     expect(screen.queryByText(/Recorded AI answer/)).toBeNull();
   });
 
+  it('shows the recorded-answer note once when the condition and the comparison were both recorded', async () => {
+    const recorded = { model: 'claude-opus-5-5', recorded: true };
+    mockFetch(pack({ handover: handover({ conditionAi: recorded, comparisonAi: recorded, itemDescription: 'White scooter' }) }));
+    render(<RecordScreen id="h1" />);
+    await screen.findByText('Record intact — every step is sealed to the one before.');
+    expect(screen.getAllByText('Recorded AI answer for the sample photos (claude-opus-5-5)')).toHaveLength(1);
+  });
+
   it('keeps only the time in the number font on a timeline line', async () => {
     mockFetch(pack());
     const { container } = render(<RecordScreen id="h1" />);
