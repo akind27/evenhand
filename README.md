@@ -4,7 +4,7 @@ Keep your passport. Keep the peace.
 
 Some island rental shops keep a tourist's passport as the deposit. Evenhand replaces it with a PayPal hold and a sealed photo record that the shop and the renter both see. AI compares the photos. A person decides any charge.
 
-- Live demo: <!-- LIVE_URL -->
+- Live demo: https://evenhand-one.vercel.app (real PayPal sandbox; see "Sandbox test buyer" below to approve a hold)
 - Licence: MIT (see `LICENSE`)
 - Built for the PayPal AI Hackathon 2026. PayPal sandbox only. No real money moves.
 
@@ -26,7 +26,7 @@ This works with no keys at all when you run it locally (keyless demo mode, clear
 
 The renter's phone is bound at confirmation; a second device can only read. "Open renter view" in the same browser is the confirming device, so one-laptop judging works. If a shop hands its own tablet to the renter at the counter, that tablet becomes the bound device. We recommend that the renter confirms on their own phone.
 
-**About the AI answers for the sample photos.** They are recorded answers. `scripts/record-demo-answers.ts` produces them once, with a real Anthropic key, and writes `src/lib/demo/recorded/scooter-a.json` (bundled with the app). Until that script has been run, the file is empty: in keyless mode the AI steps then say the check could not run, and a person compares the photos. With a key set, the sample photos get the recorded answers once they exist (labelled "Recorded AI answer for the sample photos (claude-opus-5-5)"), so the judge path is free and repeatable; real camera photos always go to Claude.
+**About the AI answers for the sample photos.** They are recorded answers. `scripts/record-demo-answers.ts` ran the real model (`claude-opus-5-5`) once on 8 Nov 2026 and wrote `src/lib/demo/recorded/scooter-a.json` (bundled with the app). The sample photos get these answers in every mode, labelled "Recorded AI answer for the sample photos (claude-opus-5-5)", so the judge path is free and repeatable: the clean return has no findings, and the damaged return has two (a scratch on the left rear panel matched to "Scratch on a body panel €20.00", and the missing right mirror matched to "Mirror €30.00"). Real camera photos always go to Claude live.
 
 ## How PayPal is used
 
@@ -80,12 +80,19 @@ A hosted site (Vercel) needs the PayPal sandbox keys and `BLOB_READ_WRITE_TOKEN`
 
 ### Sandbox test buyer
 
-<!-- SANDBOX_BUYER: add the sandbox buyer login here before submitting. -->
+On the live site the yellow PayPal button opens PayPal's real sandbox. To approve the €150 hold, log in there with this PayPal **sandbox** buyer (test money only, no real account):
+
+- Email: `sb-cwoxd53781910@personal.example.com`
+- Password: <!-- SANDBOX_BUYER_PASSWORD: Akind adds the sandbox buyer password here before submitting. -->
+
+PayPal's button may say "Pay"; the app only asks PayPal for an authorization (a hold). Nothing is captured until the renter accepts a charge.
+
+Verified on the live site on 8 Nov 2026: hold (authorize) approved in the PayPal sandbox, then a partial capture of €50.00 with €100.00 released, and the sealed record intact.
 
 ### Scripts
 
 - `npx tsx scripts/sandbox-check.ts`: a manual check of the PayPal sandbox (hold, then partial capture). Needs the sandbox keys.
-- `npx tsx scripts/record-demo-answers.ts`: runs the real AI on the three sample sets (photo checks, condition record, both comparisons) and writes `src/lib/demo/recorded/scooter-a.json`. It makes real API calls and costs money. Run it once with `ANTHROPIC_API_KEY` set. Until then that file is `{}`.
+- `npx tsx scripts/record-demo-answers.ts`: runs the real AI on the three sample sets (photo checks, condition record, both comparisons) and writes `src/lib/demo/recorded/scooter-a.json`. It makes real API calls and costs money. Run it once with `ANTHROPIC_API_KEY` set. `--recheck <set>/<angle>` repeats a single photo check and keeps every other answer. The bundled answers were recorded on 8 Nov 2026.
 
 ## Tests
 
