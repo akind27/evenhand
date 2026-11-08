@@ -22,8 +22,8 @@ async function renterAcceptsAndEveryoneAgrees(shop: Page, renter: Page): Promise
   await expect(renter.getByText('Record intact', { exact: true })).toBeVisible();
 }
 
-// Needs the recorded answers from scripts/record-demo-answers.ts.
-test.fixme('damaged return: the AI finds the mirror and the scratch', async ({ page, browser }) => {
+// Uses the recorded Claude answers for the bundled sample photos (src/lib/demo/recorded/scooter-a.json).
+test('damaged return: the AI finds the mirror and the scratch', async ({ page, browser }) => {
   await startDemo(page);
   const { renter, renterContext } = await pickupToHold(page, browser);
 
@@ -31,16 +31,17 @@ test.fixme('damaged return: the AI finds the mirror and the scratch', async ({ p
   await expect(page.getByText('The AI comparison was not available')).toHaveCount(0);
 
   // Confirm the mirror (€30) and the scratch (€20). Dismiss anything else.
-  const undecided = page.getByRole('listitem').filter({ has: page.getByRole('button', { name: 'Dismiss' }) });
+  const undecided = undecidedFindings(page);
   expect(await undecided.count()).toBeGreaterThan(0);
   while ((await undecided.count()) > 0) {
     const card = undecided.first();
     const before = await undecided.count();
-    const text = (await card.innerText()).toLowerCase();
+    // Decide by the finding's own title; the card's full text also holds every price-list option.
+    const text = (await card.getByRole('heading').first().innerText()).toLowerCase();
     if (text.includes('mirror')) {
       await card.getByLabel(/^Price item/).selectOption({ label: 'Mirror — €30.00' });
       await card.getByRole('button', { name: 'Confirm', exact: true }).click();
-    } else if (text.includes('scratch')) {
+    } else if (/scratch|scrape|panel/.test(text)) {
       await card.getByLabel(/^Price item/).selectOption({ label: 'Scratch on a body panel — €20.00' });
       await card.getByRole('button', { name: 'Confirm', exact: true }).click();
     } else {
@@ -55,13 +56,18 @@ test.fixme('damaged return: the AI finds the mirror and the scratch', async ({ p
   await renterContext.close();
 });
 
-// Same money path without the AI: the shop adds the two findings by hand from the price list.
-test('damaged return (manual findings): charged €50, released €100', async ({ page, browser }) => {
+// The shop is in charge: it dismisses every AI finding and adds the two findings by hand from the price list.
+test('damaged return (shop overrides the AI, findings by hand): charged €50, released €100', async ({ page, browser }) => {
   await startDemo(page);
   const { renter, renterContext } = await pickupToHold(page, browser);
 
   await returnWithSamples(page, 'Sample: new marks');
-  await expect(page.getByText('The AI comparison was not available')).toBeVisible();
+  const aiFindings = undecidedFindings(page);
+  while ((await aiFindings.count()) > 0) {
+    const before = await aiFindings.count();
+    await aiFindings.first().getByRole('button', { name: 'Dismiss' }).click();
+    await expect(aiFindings).toHaveCount(before - 1);
+  }
 
   await addByHand(page, { side: 'left', where: 'Left mirror', what: 'Mirror glass is cracked', price: 'Mirror — €30.00' });
   await addByHand(page, { side: 'right', where: 'Right body panel', what: 'A long scratch in the paint', price: 'Scratch on a body panel — €20.00' });
@@ -75,6 +81,14 @@ test('damaged return (manual findings): charged €50, released €100', async (
   await renterAcceptsAndEveryoneAgrees(page, renter);
   await renterContext.close();
 });
+
+/** Findings the shop has not decided yet: neither Confirm nor Dismiss is pressed. */
+function undecidedFindings(page: Page) {
+  return page
+    .getByRole('listitem')
+    .filter({ has: page.getByRole('button', { name: 'Confirm', exact: true, pressed: false }) })
+    .filter({ has: page.getByRole('button', { name: 'Dismiss', pressed: false }) });
+}
 
 interface ByHand {
   side: 'left' | 'right';

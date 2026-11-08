@@ -81,6 +81,23 @@ async function main(): Promise<void> {
     'return-damaged': loadSet('return-damaged'),
   };
 
+  // `--recheck <set>/<angle>` repeats one photo check and keeps every other recorded answer as it is.
+  // Use it when a single check came back wrong by chance (the same photo, slightly cropped, passed).
+  const recheckAt = process.argv.indexOf('--recheck');
+  if (recheckAt !== -1) {
+    const [set, angle] = (process.argv[recheckAt + 1] ?? '').split('/') as [SetName, Angle];
+    const photo = sets[set]?.find((candidate) => candidate.angle === angle);
+    if (photo === undefined) {
+      throw new Error('Use --recheck <set>/<angle>, for example --recheck pickup/right.');
+    }
+    const existing = JSON.parse(readFileSync(OUT_FILE, 'utf8')) as Record<string, unknown>;
+    const { value, key } = mustSucceed(`photo check ${set}/${angle}`, await ai.checkPhoto({ photo, expectedAngle: angle, itemType: ITEM_TYPE }));
+    console.log(`  ${set}/${angle}: ${value.usable ? 'usable' : 'NOT usable'} — ${value.reason}`);
+    writeFileSync(OUT_FILE, `${JSON.stringify({ ...existing, [key]: value }, null, 2)}\n`, 'utf8');
+    console.log(`Updated ${key.slice(0, 24)}… in ${OUT_FILE}`);
+    return;
+  }
+
   const answers: Record<string, unknown> = {};
 
   console.log('Photo checks:');

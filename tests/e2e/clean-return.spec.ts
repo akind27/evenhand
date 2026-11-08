@@ -7,7 +7,7 @@ test('clean return: the deposit is released and nothing is charged', async ({ pa
 
   await returnWithSamples(page, 'Sample: no new marks');
 
-  // Recorded AI answers are empty for now, so the comparison either finds nothing or says it could not run.
+  // With the recorded answers the comparison finds nothing new; without them it says it could not run.
   await expect(page.getByText(/No new marks were found|The AI comparison was not available/)).toBeVisible();
   await expect(page.getByTestId('total')).toContainText('Charge €0.00');
 

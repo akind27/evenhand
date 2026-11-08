@@ -1,1 +1,105 @@
-{}
+{
+  "photoCheck:0b837e18439caea1f23bcbc409c093f7e175202aa0e9c9dea81cbd4a93b8ce27": {
+    "usable": true,
+    "reason": "The photo is sharp, well lit and shows the whole scooter from the front, so it is fine to use.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:1e68c1a5c5d351340fe8b52f701c24413a0f96bbdd343db5ed558b2219d00e1b": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the back, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:c90fdffbe8f0f70ce4d3eca6d57517b096093de09a87df4615633d6f3ec4b157": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the left side, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:2d074f3b4b5c56e7db162d223814d27ce143c746c8fd7d8e6210f37da75045c5": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is sharp, well lit and clearly shown from its right side.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:c6ac8acfa89d86c373ec09c84a294b0b357ec1be18302e1ec09da8f6a81c20b1": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the front, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:163640558a820272782c8b26c4a08ed49f04a3521770b7e55fc150762341ecd9": {
+    "usable": true,
+    "reason": "The photo is fine: the scooter's back is fully in frame, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:949d31313db5535271504acd794ee0d6e1b96c6f9242b4211bd21a08a301fcfa": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the left side, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:d7faed408856b225b2d4048475cdd5d70bf6e6ddbbb9046d855df835918cc7fc": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible, sharp and well lit from the right side.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:244deafa73bf3c40208bace0e491d5d49ab4e5ff5db53bdff51c8df2d60f4714": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the left side, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "photoCheck:6fd0a11ef00ca8c3e75bbcc9c9293e7216e724a9beffef8a686b4874b77330f3": {
+    "usable": true,
+    "reason": "The photo is fine: the whole scooter is clearly visible from the right side, sharp and well lit.",
+    "personVisible": false,
+    "angleMatches": true
+  },
+  "condition:0b837e18439caea1f23bcbc409c093f7e175202aa0e9c9dea81cbd4a93b8ce27,1e68c1a5c5d351340fe8b52f701c24413a0f96bbdd343db5ed558b2219d00e1b,2d074f3b4b5c56e7db162d223814d27ce143c746c8fd7d8e6210f37da75045c5,c90fdffbe8f0f70ce4d3eca6d57517b096093de09a87df4615633d6f3ec4b157": {
+    "itemDescription": "A white Vespa-style scooter with a black seat, black floorboard and chrome mirrors and rear rack. It looks clean and in good general condition, with no clearly visible damage in these photos.",
+    "detectedItemType": "scooter",
+    "suggestedRuleId": "scooter-125",
+    "marks": []
+  },
+  "comparison:0b837e18439caea1f23bcbc409c093f7e175202aa0e9c9dea81cbd4a93b8ce27,163640558a820272782c8b26c4a08ed49f04a3521770b7e55fc150762341ecd9,1e68c1a5c5d351340fe8b52f701c24413a0f96bbdd343db5ed558b2219d00e1b,2d074f3b4b5c56e7db162d223814d27ce143c746c8fd7d8e6210f37da75045c5,949d31313db5535271504acd794ee0d6e1b96c6f9242b4211bd21a08a301fcfa,c6ac8acfa89d86c373ec09c84a294b0b357ec1be18302e1ec09da8f6a81c20b1,c90fdffbe8f0f70ce4d3eca6d57517b096093de09a87df4615633d6f3ec4b157,d7faed408856b225b2d4048475cdd5d70bf6e6ddbbb9046d855df835918cc7fc": {
+    "findings": [],
+    "explanation": "We compared the pickup and return photos from the front, back, left and right. The scooter looks the same in both sets. The body panels, mirrors, lights, seat and wheels show no visible changes, and we found no new damage. Small differences in lighting, shadows and camera position were not counted as damage. Thank you for returning the scooter in good condition."
+  },
+  "comparison:0b837e18439caea1f23bcbc409c093f7e175202aa0e9c9dea81cbd4a93b8ce27,163640558a820272782c8b26c4a08ed49f04a3521770b7e55fc150762341ecd9,1e68c1a5c5d351340fe8b52f701c24413a0f96bbdd343db5ed558b2219d00e1b,244deafa73bf3c40208bace0e491d5d49ab4e5ff5db53bdff51c8df2d60f4714,2d074f3b4b5c56e7db162d223814d27ce143c746c8fd7d8e6210f37da75045c5,6fd0a11ef00ca8c3e75bbcc9c9293e7216e724a9beffef8a686b4874b77330f3,c6ac8acfa89d86c373ec09c84a294b0b357ec1be18302e1ec09da8f6a81c20b1,c90fdffbe8f0f70ce4d3eca6d57517b096093de09a87df4615633d6f3ec4b157": {
+    "findings": [
+      {
+        "angle": "left",
+        "location": "Left rear side body panel",
+        "description": "Long grey scrape mark across the rear side panel, not visible at pickup.",
+        "severity": "moderate",
+        "confidence": 0.88,
+        "box": {
+          "x": 0.61,
+          "y": 0.58,
+          "w": 0.215,
+          "h": 0.07
+        },
+        "priceItemId": "scratch-panel"
+      },
+      {
+        "angle": "right",
+        "location": "Mirror on the right side of the handlebar",
+        "description": "Mirror glass appears missing or broken; only the mount remains, while a round mirror was present at pickup.",
+        "severity": "moderate",
+        "confidence": 0.82,
+        "box": {
+          "x": 0.48,
+          "y": 0.31,
+          "w": 0.08,
+          "h": 0.09
+        },
+        "priceItemId": "mirror"
+      }
+    ],
+    "explanation": "We compared the pickup and return photos. Two new differences were found: a long scrape mark on the left rear side panel, and the mirror on the right side of the handlebar appears to be missing its glass or broken. No other new damage was seen in the front and back photos. A staff member will review these findings."
+  }
+}
