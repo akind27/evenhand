@@ -1,0 +1,53 @@
+/* Print / save as PDF for the sealed record: black ink on white. Photos, stamps, fingerprints and the machine strip stay.
+   Every rule hangs on the .record-doc wrapper, so nothing here can touch another page. */
+@media print {
+  html:has(.record-doc),
+  body:has(.record-doc),
+  .record-doc {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .record-doc .no-print,
+  .record-doc nav,
+  .record-doc button {
+    display: none !important;
+  }
+
+  .record-doc.doc-page {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Fingerprints are printed in full: a paper copy has nothing to tap. */
+  .record-doc .fp-full {
+    display: block !important;
+  }
+
+  .record-doc header,
+  .record-doc .bg-panel {
+    background: #fff !important;
+  }
+
+  /* Everything prints in black. Stamps and seal results keep their words, so the status never depends on colour. */
+  .record-doc * {
+    color: #000 !important;
+    border-color: #000 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .record-doc figure,
+  .record-doc li,
+  .record-doc section {
+    break-inside: avoid;
+  }
+
+  .record-doc img {
+    max-width: 100%;
+  }
+
+  .record-doc a {
+    text-decoration: none;
+  }
+}

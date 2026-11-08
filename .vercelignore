@@ -1,0 +1,19 @@
+# Never publish tool state, test output, secrets or working docs
+.claude/
+.superpowers/
+.impeccable/
+.rivet/
+.playwright-mcp/
+playwright-report/
+test-results/
+coverage/
+.env*
+docs/superpowers/
+docs/submission/
+submission-work/
+*.log
+.DS_Store
+.data/
+AGENTS.md
+next-env.d.ts
+*.tsbuildinfo
