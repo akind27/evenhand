@@ -87,7 +87,7 @@ On the live site the yellow PayPal button opens PayPal's real sandbox. To approv
 
 PayPal's button may say "Pay"; the app only asks PayPal for an authorization (a hold). Nothing is captured until the renter accepts a charge.
 
-Verified on the live site on 8 Nov 2026: hold (authorize) approved in the PayPal sandbox, then a partial capture of €50.00 with €100.00 released, and the sealed record intact.
+Verified on the live site on 8 Nov 2026: holds (authorize) approved in the PayPal sandbox; a clean return voided its hold; a damaged return made a partial capture of €50.00 with €100.00 released; the sealed record stayed intact. The demo video was recorded from these real sandbox runs.
 
 ### Scripts
 
